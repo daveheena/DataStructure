@@ -48,19 +48,69 @@ public class BinarySearchTree{
 	}
 	
 	public void inOrderTreeTraversal(){
-		if(root != null){
-			printInOrder(root);
-		}
+		printInOrder(root);
 	}
 	
 	private void printInOrder(TreeNode node){
 		if(node != null){
-			System.out.print(node.data+" ");
 			if(node.left != null){
 				printInOrder(node.left);
 			}
+			System.out.print(node.data+" ");			
 			if(node.right != null){
 				printInOrder(node.right);
+			}
+		}
+	}
+	
+	public void preOrderTreeTraversal(){
+		printPreOrder(root);
+	}
+	
+	private void printPreOrder(TreeNode node){
+		if(node != null){
+			System.out.print(node.data+" ");
+			if(node.left != null){
+				printPreOrder(node.left);
+			}
+			if(node.right != null){
+				printPreOrder(node.right);
+			}
+		}
+	}
+	
+	public void postOrderTreeTraversal(){
+		printPostOrder(root);
+	}
+	
+	private void printPostOrder(TreeNode node){
+		if(node != null){
+			if(node.left != null){
+				printPostOrder(node.left);
+			}
+			if(node.right != null){
+				printPostOrder(node.right);
+			}
+			System.out.print(node.data+" ");
+		}
+	}
+	
+	public void levelOrderTreeTraversal(){
+		java.util.Queue<TreeNode> queue = new java.util.LinkedList<TreeNode>();
+		queue.add(root);
+		
+		while(!queue.isEmpty()){
+			TreeNode node = queue.remove();
+			if(node != null){
+				System.out.print(node.data+" ");
+				
+				if(node.left != null){
+					queue.add(node.left);
+				}
+				
+				if(node.right != null){
+					queue.add(node.right);
+				}
 			}
 		}
 	}
